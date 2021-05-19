@@ -1,0 +1,31 @@
+library("rjson")
+data.json <- fromJSON(file="technical_test_data_analyst.json")
+
+
+
+Activo <- unlist(data.json$activo)
+Fecha_inicial <- unlist(data.json$fecha_inicial)
+Fecha_final <- unlist(data.json$fecha_final)
+Latitud <- unlist(data.json$latitud)
+Longitud <- unlist(data.json$longitud)
+Valorventa  <- unlist(data.json$valorventa)
+Valorarriendo  <- unlist(data.json$valorarriendo)
+Identificador  <- unlist(data.json$id)
+
+
+DF.1 <- data.frame(Activo, Fecha_final, Fecha_inicial, Identificador)
+DF.2 <- data.frame(Latitud, Longitud)
+DF.3 <- data.frame(Valorarriendo)
+DF.4 <- data.frame(Valorventa)
+
+
+write.csv(DF.1, file = "dataframe1.csv")
+write.csv(DF.2, file = "dataframe2.csv")
+write.csv(DF.3, file = "dataframe3.csv")
+write.csv(DF.4, file = "dataframe4.csv")
+
+DATA <- unlist(data.json$data)
+Data.df <- data.frame(DATA)
+write.csv(Data.df, file = "Ddataframe.csv")
+Ddataframe <- read.csv("~/Habi/Prueba/Ddataframe.csv", header=FALSE, sep=";")
+View(Ddataframe)
